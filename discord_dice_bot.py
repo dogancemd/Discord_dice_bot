@@ -23,7 +23,7 @@ async def on_message(message):
             tmp_dices=tmp_dices.translate(str.maketrans({"+":"/+"," ":"/+","-":"/-","\n":"/+"}))
             tmp_dices=tmp_dices.split("/")
             for dice in tmp_dices[1:]:
-                die_result,die_result_list=roll_dice(die)(dice)
+                die_result,die_result_list=roll_dice(dice)
                 result_str_2+=f"{dice} {die_result_list}"
                 result+=die_result
             result_str+=f" {result} ({result_str_2})"
@@ -37,7 +37,7 @@ def roll_dice(die):
         if "d" in die:
             tmp=die.split("d")
             if len(tmp)==2:
-                die_num=int(tmp[0])
+                die_num=int(tmp[0][1:])
                 die_type=int(tmp[1])+1
                 result = np.random.randint(1,die_type+1,die_num)
                 return np.sum(result),list(result)
