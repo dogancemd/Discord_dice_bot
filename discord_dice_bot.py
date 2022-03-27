@@ -57,4 +57,4 @@ def roll_dice(die):
             return -np.sum(result),list(result)
         else:
             return -int(die),[-int(die)]
-bot.run("NzcyNDA1ODgzNDMzOTEwMjcy.X56NCQ.-Z3Br386WagRZJRAG8zqF6XVtDA")
+bot.run("#Your bot's token")
