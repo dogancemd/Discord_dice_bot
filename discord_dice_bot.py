@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import numpy as np
 bot=discord.Client()
-bot=commands.Bot(command_prefix="#Prefix you want to use for your bot")#Even though this bot does not depend on it
+bot=commands.Bot(command_prefix="-")#Even though this bot does not depend on it
 @bot.event
 async def on_ready():
     print("{0.user} is online".format(bot))
@@ -34,25 +34,27 @@ async def on_message(message):
 
 def roll_dice(die):
     if "+" in die:
-        tmp=tmp[1:]
+        die=die[1:]
         if "d" in die:
             tmp=die.split("d")
-            if len(tmp)==2:
-                die_num=int(tmp[0])
-                die_type=int(tmp[1])+1
-                result = np.random.randint(1,die_type+1,die_num)
-                return np.sum(result),list(result)
+            if tmp[0]=="":
+                tmp[0]=1
+            die_num=int(tmp[0])
+            die_type=int(tmp[1])+1
+            result = np.random.randint(1,die_type+1,die_num)
+            return np.sum(result),list(result)
         else:
             return int(die),[int(die)]
     elif "-" in die:
-        tmp=tmp[1:]
+        die=die[1:]
         if "d" in die:
             tmp=die.split("d")
-            if len(tmp)==2:
-                die_num=int(tmp[0])
-                die_type=int(tmp[1])+1
-                result = np.random.randint(1,die_type+1,die_num)
-                return -np.sum(result),list(result)
+            if tmp[0]=="":
+                tmp[0]=1
+            die_num=int(tmp[0])
+            die_type=int(tmp[1])+1
+            result = np.random.randint(1,die_type+1,die_num)
+            return -np.sum(result),list(result)
         else:
             return -int(die),[-int(die)]
-bot.run("#Bot's token")
+bot.run("NzcyNDA1ODgzNDMzOTEwMjcy.X56NCQ.-Z3Br386WagRZJRAG8zqF6XVtDA")
