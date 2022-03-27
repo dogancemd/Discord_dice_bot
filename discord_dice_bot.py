@@ -34,20 +34,22 @@ async def on_message(message):
 
 def roll_dice(die):
     if "+" in die:
+        tmp=tmp[1:]
         if "d" in die:
             tmp=die.split("d")
             if len(tmp)==2:
-                die_num=int(tmp[0][1:])
+                die_num=int(tmp[0])
                 die_type=int(tmp[1])+1
                 result = np.random.randint(1,die_type+1,die_num)
                 return np.sum(result),list(result)
         else:
             return int(die),[int(die)]
     elif "-" in die:
+        tmp=tmp[1:]
         if "d" in die:
             tmp=die.split("d")
             if len(tmp)==2:
-                die_num=int(tmp[0][1:])
+                die_num=int(tmp[0])
                 die_type=int(tmp[1])+1
                 result = np.random.randint(1,die_type+1,die_num)
                 return -np.sum(result),list(result)
